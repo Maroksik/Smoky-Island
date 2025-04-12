@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smoky Island - Каталог товарів</title>
+    <style>
+        /* Базові стилі */
+        :root {
+            --primary-color: #6b21a8;
+            --primary-light: #8b5cf6;
+            --primary-dark: #4c1d95;
+            --secondary-color: #0f172a;
+            --accent-color: #d946ef;
+            --text-color: #1e293b;
+            --text-light: #64748b;
+            --background-color: #f8fafc;
+            --background-dark: #0f172a;
+            --white: #ffffff;
+            --black: #000000;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --gray-900: #0f172a;
+            
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            
+            --border-radius-sm: 0.125rem;
+            --border-radius: 0.25rem;
+            --border-radius-md: 0.375rem;
+            --border-radius-lg: 0.5rem;
+            --border-radius-xl: 0.75rem;
+            --border-radius-2xl: 1rem;
+            --border-radius-3xl: 1.5rem;
+            --border-radius-full: 9999px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+        
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--primary-color);
+        }
+        
+        ul {
+            list-style-type: none;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        button {
+            cursor: pointer;
+            font-family: inherit;
+        }
+        
+        /* Шапка сайту */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow-md);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        nav ul li a {
+            font-weight: 500;
+        }
+        
+        nav ul li a.active {
+            color: var(--primary-color);
+            position: relative;
+        }
+        
+        nav ul li a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .search-icon, .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 18px;
+            height: 18px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            font-size: 0.7rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            width: 24px;
+            height: 20px;
+            position: relative;
+        }
+        
+        .mobile-menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: var(--text-color);
+            position: absolute;
+            left: 0;
+        }
+        
+        .mobile-menu-toggle span:nth-child(1) {
+            top: 0;
+        }
+        
+        .mobile-menu-toggle span:nth-child(2) {
+            top: 9px;
+        }
+        
+        .mobile-menu-toggle span:nth-child(3) {
+            top: 18px;
+        }
+        
+        /* Заголовок каталогу */
+        .catalog-hero {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 8rem 5% 3rem;
+            text-align: center;
+        }
+        
+        .catalog-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .catalog-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Контейнер каталогу */
+        .catalog-container {
+            display: flex;
+            gap: 2rem;
+            padding: 3rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        /* Бічна панель з фільтрами */
+        .catalog-sidebar {
+            width: 280px;
+            flex-shrink: 0;
+        }
+        
+        .filter-section {
+            background-color: white;
+            border-radius: var(--border-radius-lg);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .filter-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+            position: relative;
+        }
+        
+        .filter-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: var(--border-radius-full);
+        }
+        
+        .filter-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .filter-list a {
+            color: var(--text-color);
+            transition: color 0.3s ease;
+        }
+        
+        .filter-list a:hover,
+        .filter-list a.active {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        /* Чекбокси */
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        .checkbox-label input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+        
+        .checkbox-custom {
+            position: relative;
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+            background-color: white;
+            border: 2px solid var(--gray-300);
+            border-radius: 3px;
+        }
+        
+        .checkbox-label input:checked ~ .checkbox-custom {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .checkbox-custom::after {
+            content: '';
+            position: absolute;
+            display: none;
+            left: 5px;
+            top: 1px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        
+        .checkbox-label input:checked ~ .checkbox-custom::after {
+            display: block;
+        }
+        
+        /* Слайдер ціни */
+        .price-slider {
+            margin-top: 1.5rem;
+        }
+        
+        .price-input {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .price-input input {
+            width: 80px;
+            padding: 0.5rem;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--border-radius);
+        }
+        
+        .price-input span {
+            margin: 0 0.5rem;
+            color: var(--text-light);
+        }
+        
+        .slider-container {
+            position: relative;
+            height: 5px;
+            background-color: var(--gray-300);
+            border-radius: var(--border-radius-full);
+            margin-bottom: 1.5rem;
+        }
+        
+        .slider-track {
+            position: absolute;
+            height: 100%;
+            background-color: var(--primary-color);
+            border-radius: var(--border-radius-full);
+        }
+        
+        /* Кнопки фільтрів */
+        .apply-filters-btn,
+        .reset-filters-btn {
+            width: 100%;
+            padding: 0.75rem 0;
+            border-radius: var(--border-radius-lg);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .apply-filters-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            margin-bottom: 1rem;
+        }
+        
+        .apply-filters-btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .reset-filters-btn {
+            background-color: transparent;
+            color: var(--text-light);
+            border: 1px solid var(--gray-300);
+        }
+        
+        .reset-filters-btn:hover {
+            background-color: var(--gray-100);
+            color: var(--text-color);
+        }
+        
+        /* Основний вміст каталогу */
+        .catalog-content {
+            flex: 1;
+        }
+        
+        .catalog-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            background-color: white;
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow);
+        }
+        
+        .catalog-results {
+            font-weight: 500;
+        }
+        
+        .catalog-sort {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .catalog-sort label {
+            color: var(--text-light);
+        }
+        
+        .catalog-sort select {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--border-radius);
+            background-color: white;
+        }
+        
+        /* Сітка товарів */
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .product-image {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 1 / 1;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--border-radius-full);
+            font-size: 0.8rem;
+            font-weight: 600;
+            background-color: var(--primary-color);
+            color: white;
+            z-index: 1;
+        }
+        
+        .sale-badge {
+            background-color: #e11d48;
+        }
+        
+        .product-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .product-card:hover .product-overlay {
+            opacity: 1;
+        }
+        
+        .quick-view-btn {
+            background-color: var(--white);
+            color: var(--primary-dark);
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius-lg);
+            font-weight: 600;
+            border: none;
+        }
+        
+        .quick-view-btn:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .product-card h3 {
+            padding: 1.25rem 1.25rem 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .product-description {
+            padding: 0 1.25rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            flex-grow: 1;
+        }
+        
+        .product-price {
+            padding: 0.5rem 1.25rem;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+        
+        .old-price {
+            text-decoration: line-through;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: normal;
+            margin-right: 0.5rem;
+        }
+        
+        .add-to-cart-btn {
+            margin: 0.5rem 1.25rem 1.25rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 0;
+            border-radius: var(--border-radius-lg);
+            font-weight: 600;
+        }
+        
+        .add-to-cart-btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        /* Пагінація */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .pagination-btn,
+        .pagination-next {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid var(--gray-300);
+            background-color: white;
+        }
+        
+        .pagination-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .pagination-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        /* Підписка на новини */
+        .newsletter {
+            padding: 5rem 5%;
+            background-color: var(--primary-dark);
+            color: white;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .newsletter-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .newsletter h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .newsletter p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: var(--border-radius-lg) 0 0 var(--border-radius-lg);
+            font-size: 1rem;
+        }
+        
+        .newsletter-form button {
+            padding: 1rem 2rem;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 0 var(--border-radius-lg) var(--border-radius-lg) 0;
+            font-weight: 600;
+        }
+        
+        /* Футер */
+        footer {
+            background-color: var(--gray-900);
+            color: var(--gray-300);
+            padding: 5rem 5% 2rem;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .footer-column p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-column ul {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            color: var(--gray-400);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 3rem;
+            max-width: 1400px;
+            margin: 3rem auto 0;
+        }
+        
+        /* Медіа-запити для адаптивності */
+        @media (max-width: 1024px) {
+            .catalog-container {
+                flex-direction: column;
+            }
+            
+            .catalog-sidebar {
+                width: 100%;
+            }
+            
+            .filter-section {
+                margin-bottom: 1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .catalog-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .catalog-header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+            
+            .catalog-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input,
+            .newsletter-form button {
+                width: 100%;
+                border-radius: var(--border-radius-lg);
+            }
+            
+            .newsletter-form input {
+                margin-bottom: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .catalog-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pagination {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>Smoky Island</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Головна</a></li>
+                    <li><a href="catalog.html" class="active">Каталог</a></li>
+                    <li><a href="pod-systems.html">Под-системи</a></li>
+                    <li><a href="accessories.html">Розхідники</a></li>
+                    <li><a href="about.html">Про нас</a></li>
+                    <li><a href="contacts.html">Контакти</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div class="search-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </div>
+                <div class="cart-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="cart-count">0</span>
+                </div>
+                <button class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="catalog-hero">
+        <div class="catalog-hero-content">
+            <h1>Каталог товарів</h1>
+            <p>Знайдіть ідеальну под-систему та розхідники для вашого комфортного куріння</p>
+        </div>
+    </section>
+    
+    <section class="catalog-container">
+        <div class="catalog-sidebar">
+            <div class="filter-section">
+                <h3>Категорії</h3>
+                <ul class="filter-list">
+                    <li><a href="#" class="active">Всі товари</a></li>
+                    <li><a href="#">Под-системи</a></li>
+                    <li><a href="#">Картриджі</a></li>
+                    <li><a href="#">Рідини</a></li>
+                    <li><a href="#">Аксесуари</a></li>
+                    <li><a href="#">Стартові набори</a></li>
+                </ul>
+            </div>
+            
+            <div class="filter-section">
+                <h3>Бренди</h3>
+                <ul class="filter-list">
+                    <li>
+                        <label class="checkbox-label">
+                            <input type="checkbox" checked>
+                            <span class="checkbox-custom"></span>
+                            JUUL
+                        </label>
+                    </li>
+                    <li>
+                        <label class="checkbox-label">
+                            <input type="checkbox" checked>
+                            <span class="checkbox-custom"></span>
+                            SMOK
+                        </label>
+                    </li>
+                    <li>
+                        <label class="checkbox-label">
+                            <input type="checkbox" checked>
+                            <span class="checkbox-custom"></span>
+                            Vaporesso
+                        </label>
+                    </li>
+                    <li>
+                        <label class="checkbox-label">
+                            <input type="checkbox">
+                            <span class="checkbox-custom"></span>
+                            GeekVape
+                        </label>
+                    </li>
+                    <li>
+                        <label class="checkbox-label">
+                            <input type="checkbox">
+                            <span class="checkbox-custom"></span>
+                            Lost Vape
+                        </label>
+                    </li>
+                    <li>
+                        <label class="checkbox-label">
+                            <input type="checkbox">
+                            <span class="checkbox-custom"></span>
+                            Voopoo
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="filter-section">
+                <h3>Ціна</h3>
+                <div class="price-slider">
+                    <div class="price-input">
+                        <input type="number" value="0" min="0" max="5000" class="price-min">
+                        <span>-</span>
+                        <input type="number" value="5000" min="0" max="5000" class="price-max">
+                    </div>
+                    <div class="slider-container">
+                        <div class="slider-track" style="left: 0%; width: 100%;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="apply-filters-btn">Застосувати фільтри</button>
+            <button class="reset-filters-btn">Скинути фільтри</button>
+        </div>
+        
+        <div class="catalog-content">
+            <div class="catalog-header">
+                <div class="catalog-results">Знайдено 24 товарів</div>
+                <div class="catalog-sort">
+                    <label for="sort-select">Сортувати за:</label>
+                    <select id="sort-select">
+                        <option value="popular">Популярністю</option>
+                        <option value="price-asc">Ціною (від низької до високої)</option>
+                        <option value="price-desc">Ціною (від високої до низької)</option>
+                        <option value="new">Новинки</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="catalog-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="/api/placeholder/300/300" alt="JUUL Starter Kit">
+                        <div class="product-overlay">
+                            <button class="quick-view-btn">Швидкий перегляд</button>
+                        </div>
+                    </div>
+                    <h3>JUUL Starter Kit</h3>
+                    <p class="product-description">Компактна та зручна под-система для початківців</p>
+                    <div class="product-price">1299 грн</div>
+                    <button class="add-to-cart-btn">Додати у кошик</button>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="/api/placeholder/300/300" alt="SMOK Novo 4">
+                        <div class="product-overlay">
+                            <button class="quick-view-btn">Швидкий перегляд</button>
+                        </div>
+                    </div>
+                    <h3>SMOK Novo 4</h3>
+                    <p class="product-description">Потужна под-система з рег

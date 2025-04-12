@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smoky Island - Ваш магазин под-систем</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <div class="noise-overlay"></div>
+    
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>Smoky Island</h1>
+                <div class="smoke-effect"></div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Головна</a></li>
+                    <li><a href="catalog.html">Каталог</a></li>
+                    <li><a href="pod-systems.html">Под-системи</a></li>
+                    <li><a href="accessories.html">Розхідники</a></li>
+                    <li><a href="about.html">Про нас</a></li>
+                    <li><a href="contacts.html">Контакти</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div class="search-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </div>
+                <div class="cart-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="cart-count">0</span>
+                </div>
+                <button class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2 class="stagger-fade-in">Занурся в світ комфортного куріння</h2>
+            <p class="stagger-fade-in">Найкращі под-системи та розхідники за доступними цінами</p>
+            <div class="hero-buttons stagger-fade-in">
+                <a href="catalog.html" class="btn btn-primary">Перейти до каталогу</a>
+                <a href="about.html" class="btn btn-secondary">Дізнатися більше</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="/api/placeholder/600/400" alt="Под-системи Smoky Island" class="floating">
+            <div class="smoke-animation"></div>
+        </div>
+    </section>
+
+    <section class="featured-products">
+        <h2 class="section-title fade-in">Популярні товари</h2>
+        <div class="products-grid">
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <img src="/api/placeholder/300/300" alt="Под-система JUUL">
+                    <div class="product-overlay">
+                        <button class="quick-view-btn">Швидкий перегляд</button>
+                    </div>
+                </div>
+                <h3>JUUL Starter Kit</h3>
+                <p class="product-description">Компактна та зручна под-система для початківців</p>
+                <div class="product-price">1299 грн</div>
+                <button class="add-to-cart-btn">Додати у кошик</button>
+            </div>
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <img src="/api/placeholder/300/300" alt="Под-система SMOK">
+                    <div class="product-overlay">
+                        <button class="quick-view-btn">Швидкий перегляд</button>
+                    </div>
+                </div>
+                <h3>SMOK Novo 4</h3>
+                <p class="product-description">Потужна под-система з регулюванням подачі повітря</p>
+                <div class="product-price">899 грн</div>
+                <button class="add-to-cart-btn">Додати у кошик</button>
+            </div>
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <img src="/api/placeholder/300/300" alt="Картридж JUUL">
+                    <div class="product-overlay">
+                        <button class="quick-view-btn">Швидкий перегляд</button>
+                    </div>
+                </div>
+                <h3>Картриджі JUUL (4 шт)</h3>
+                <p class="product-description">Оригінальні картриджі з різними смаками</p>
+                <div class="product-price">499 грн</div>
+                <button class="add-to-cart-btn">Додати у кошик</button>
+            </div>
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <img src="/api/placeholder/300/300" alt="Рідина для вейпу">
+                    <div class="product-overlay">
+                        <button class="quick-view-btn">Швидкий перегляд</button>
+                    </div>
+                </div>
+                <h3>Рідина Smoke Kitchen</h3>
+                <p class="product-description">Преміальна рідина з високим вмістом нікотину</p>
+                <div class="product-price">349 грн</div>
+                <button class="add-to-cart-btn">Додати у кошик</button>
+            </div>
+        </div>
+        <div class="view-all-container">
+            <a href="catalog.html" class="view-all-btn">Переглянути всі товари</a>
+        </div>
+    </section>
+
+    <section class="categories">
+        <h2 class="section-title fade-in">Категорії товарів</h2>
+        <div class="categories-grid">
+            <a href="pod-systems.html" class="category-card fade-in">
+                <div class="category-image">
+                    <img src="/api/placeholder/400/300" alt="Под-системи">
+                </div>
+                <h3>Под-системи</h3>
+                <p>Широкий вибір компактних та стильних пристроїв</p>
+            </a>
+            <a href="cartridges.html" class="category-card fade-in">
+                <div class="category-image">
+                    <img src="/api/placeholder/400/300" alt="Картриджі">
+                </div>
+                <h3>Картриджі</h3>
+                <p>Оригінальні змінні картриджі для всіх популярних брендів</p>
+            </a>
+            <a href="liquids.html" class="category-card fade-in">
+                <div class="category-image">
+                    <img src="/api/placeholder/400/300" alt="Рідини">
+                </div>
+                <h3>Рідини</h3>
+                <p>Високоякісні рідини з різними смаками та рівнями нікотину</p>
+            </a>
+            <a href="accessories.html" class="category-card fade-in">
+                <div class="category-image">
+                    <img src="/api/placeholder/400/300" alt="Аксесуари">
+                </div>
+                <h3>Аксесуари</h3>
+                <p>Все необхідне для комфортного використання под-систем</p>
+            </a>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2 class="section-title fade-in">Чому обирають нас</h2>
+        <div class="features-container">
+            <div class="feature-item fade-in">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"></path>
+                    </svg>
+                </div>
+                <h3>Тільки оригінальна продукція</h3>
+                <p>Ми співпрацюємо тільки з офіційними постачальниками та гарантуємо якість наших товарів</p>
+            </div>
+            <div class="feature-item fade-in">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                        <line x1="12" y1="17" x2="12" y2="21"></line>
+                    </svg>
+                </div>
+                <h3>Професійні консультації</h3>
+                <p>Наші експерти завжди готові допомогти з вибором підходящої под-системи</p>
+            </div>
+            <div class="feature-item fade-in">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                    </svg>
+                </div>
+                <h3>Швидка доставка</h3>
+                <p>Доставляємо товари по всій Україні протягом 1-3 робочих днів</p>
+            </div>
+            <div class="feature-item fade-in">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                </div>
+                <h3>Гарантія та підтримка</h3>
+                <p>Надаємо гарантію на всі пристрої та оперативну підтримку клієнтів</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter">
+        <div class="newsletter-content">
+            <h2 class="fade-in">Підпишіться на наші новини</h2>
+            <p class="fade-in">Отримуйте інформацію про нові надходження та спеціальні пропозиції</p>
+            <form class="newsletter-form fade-in">
+                <input type="email" placeholder="Введіть вашу електронну пошту" required>
+                <button type="submit" class="btn btn-primary">Підписатися</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Smoky Island</h3>
+                <p>Ваш магазин якісних под-систем та розхідників за найкращими цінами.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 4.01c-1 .49-1.98.689-3 .99-1.121-1.265-2.783-1.335-4.38-.737S11.977 6.323 12 8v1c-3.245.083-6.135-1.395-8-4 0 0-4.182 7.433 4 11-1.872 1.247-3.739 2.088-6 2 3.308 1.803 6.913 2.423 10.034 1.517 3.58-1.04 6.522-3.723 7.651-7.742a13.84 13.84 0 0 0 .497-3.753C20.18 7.773 21.692 5.25 22 4.009z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Каталог</h3>
+                <ul>
+                    <li><a href="pod-systems.html">Под-системи</a></li>
+                    <li><a href="cartridges.html">Картриджі</a></li>
+                    <li><a href="liquids.html">Рідини</a></li>
+                    <li><a href="accessories.html">Аксесуари</a></li>
+                    <li><a href="starter-kits.html">Стартові набори</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Інформація</h3>
+                <ul>
+                    <li><a href="about.html">Про нас</a></li>
+                    <li><a href="delivery.html">Доставка і оплата</a></li>
+                    <li><a href="returns.html">Повернення товару</a></li>
+                    <li><a href="terms.html">Умови використання</a></li>
+                    <li><a href="privacy.html">Політика конфіденційності</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Контакти</h3>
+                <ul class="contact-info">
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        м. Київ, вул. Хрещатик, 1
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                        +380 (44) 123-45-67
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        info@smokyisland.com
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        Пн - Нд: 10:00 - 20:00
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Smoky Island. Всі права захищені.</p>
+        </div>
+    </footer>
+
+    <div class="quick-view-modal" id="quickViewModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-product-content">
+                <div class="modal-product-image">
+                    <img src="/api/placeholder/400/400" alt="Product Image">
+                </div>
+                <div class="modal-product-info">
+                    <h2 id="modalProductTitle">Назва продукту</h2>
+                    <div class="modal-product-price" id="modalProductPrice">0 грн</div>
+                    <div class="modal-product-description" id="modalProductDescription">
+                        Опис продукту...
+                    </div>
+                    <div class="modal-product-quantity">
+                        <label for="quantity">Кількість:</label>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" id="quantity" value="1" min="1">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                    </div>
+                    <button class="add-to-cart-btn">Додати у кошик</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Кошик</h3>
+            <span class="close-cart">&times;</span>
+        </div>
+        <div class="cart-items">
+            <!-- Cart items will be dynamically added here -->
+            <div class="empty-cart-message">Ваш кошик порожній</div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Всього:</span>
+                <span class="total-price">0 грн</span>
+            </div>
+            <button class="checkout-btn">Оформити замовлення</button>
+        </div>
+    </div>
+    <div class="cart-overlay"></div>
+
+    <script src="js/animations.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
